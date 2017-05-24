@@ -4,25 +4,31 @@ class App extends React.Component{
   constructor(){
     super();
     this.state = {
-      txt: 'this is the state text'
+      txt: ' DSF',
     }
   }
-  update(e){
-    this.setState({txt:e.target.value})
-  }
-
+ 
+ update(e){
+  this.setState({txt:'Delhi'});
+ }
   render(){
-    let txt = this.props.txt
-    return (<div>      
-              <h1>Hello JSX</h1>
-              <input type="text" onChange={this.update.bind(this)}/>
-              <h2>{this.state.txt}</h2>
+    return (<div> 
+              <h3>{this.state.txt}</h3>
+              <input type="text" onChange={this.update.bind(this)}/> 
+              <button onClick={this.update.bind(this)}>Change</button>    
+              <Button>I <Heart/> React</Button>
             </div>)
   }
 }
 
 
 
-//const App = () => <h1> Hello stateless </h1>
+const Button = (props) => <button>{props.children}</button>
 
+
+class Heart extends React.Component{
+    render(){
+      return <span>&hearts;</span>
+    }
+}
 export default App
