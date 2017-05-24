@@ -1,34 +1,25 @@
 import React from 'react';
 
 class App extends React.Component{
-  constructor(){
-    super();
-    this.state = {
-      txt: ' DSF',
-    }
-  }
- 
- update(e){
-  this.setState({txt:'Delhi'});
- }
   render(){
     return (<div> 
-              <h3>{this.state.txt}</h3>
-              <input type="text" onChange={this.update.bind(this)}/> 
-              <button onClick={this.update.bind(this)}>Change</button>    
-              <Button>I <Heart/> React</Button>
+              <Title text="Aditya"/>
             </div>)
   }
 }
 
 
+const Title = (props) => <h1>Title: {props.text}</h1>
 
-const Button = (props) => <button>{props.children}</button>
-
-
-class Heart extends React.Component{
-    render(){
-      return <span>&hearts;</span>
+Title.propTypes = {
+  text(props, propName, component){
+    if(!(propName in props)){
+      return new Error(`missing ${propName}`)
     }
+    if(props[propName].length < 6){
+      return new Error(`${propName} is too short`)
+    }
+  }
 }
+
 export default App
